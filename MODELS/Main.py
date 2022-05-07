@@ -70,6 +70,8 @@ train_generator = generator.flow(train_images, train_labels, 32)
 steps_per_epoch = train_images.shape[0] // 32
 
 
-tensorboard = callbacks.TensorBoard(log_dir="logs/model-23.1")
+tensorboard = callbacks.TensorBoard(log_dir="logs/Main")
  
-history = model.fit(train_generator, steps_per_epoch = steps_per_epoch, validation_data=(test_images, test_labels), epochs=2000, callbacks=[tensorboard])
+model.fit(train_generator, steps_per_epoch = steps_per_epoch, validation_data=(test_images, test_labels), epochs=800, callbacks=[tensorboard])
+
+model.save('saved_model/Main')
