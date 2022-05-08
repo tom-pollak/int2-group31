@@ -72,6 +72,6 @@ steps_per_epoch = train_images.shape[0] // 32
 
 tensorboard = callbacks.TensorBoard(log_dir="logs/Main")
  
-model.fit(train_generator, steps_per_epoch = steps_per_epoch, validation_data=(test_images, test_labels), epochs=800, callbacks=[tensorboard])
+model.fit(train_generator, steps_per_epoch = steps_per_epoch, validation_data=(test_images, test_labels), epochs=400, callbacks=[tensorboard])
 
 model.save('saved_model/Main')
