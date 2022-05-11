@@ -44,7 +44,7 @@ model.add(layers.Flatten())
 model.add(layers.Dense(512, activation='relu'))
 model.add(layers.BatchNormalization())
 model.add(layers.Dropout(0.5))
-model.add(layers.Dense(512, activation='relu'))
+model.add(layers.Dense(256, activation='relu'))
 model.add(layers.BatchNormalization())
 model.add(layers.Dropout(0.6))
 
@@ -70,8 +70,8 @@ train_generator = generator.flow(train_images, train_labels, 32)
 steps_per_epoch = train_images.shape[0] // 32
 
 
-tensorboard = callbacks.TensorBoard(log_dir="logs/Main_1000")
+tensorboard = callbacks.TensorBoard(log_dir="logs/Main_1000_a")
  
 model.fit(train_generator, steps_per_epoch = steps_per_epoch, validation_data=(test_images, test_labels), epochs=1000, callbacks=[tensorboard])
 
-model.save('saved_model/Main_1000')
+model.save('saved_model/Main_1000_a')
