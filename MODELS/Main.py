@@ -20,7 +20,7 @@ model = models.Sequential()
 
 model.add(layers.Conv2D(64, (3,3), padding='same', activation='relu', input_shape = (32, 32, 3)))
 model.add(layers.BatchNormalization())
-model.add(layers.Conv2D(64, (3,3), padding='same', activation='relu',))
+model.add(layers.Conv2D(64, (3,3), padding='same', activation='relu'))
 model.add(layers.BatchNormalization())
 model.add(layers.MaxPooling2D((2,2)))
 model.add(layers.Dropout(0.2))
@@ -49,6 +49,7 @@ model.add(layers.BatchNormalization())
 model.add(layers.Dropout(0.6))
 
 
+
 model.add(layers.Dense(10))
 
 model.compile(optimizer='adam',
@@ -62,16 +63,15 @@ generator = tf.keras.preprocessing.image.ImageDataGenerator(
     zoom_range = 0.2,
     shear_range=0.2, 
     channel_shift_range = 0.2,
-    featurewise_center = True,
     horizontal_flip=True
 )
- 
+
 train_generator = generator.flow(train_images, train_labels, 32)
 steps_per_epoch = train_images.shape[0] // 32
 
 
-tensorboard = callbacks.TensorBoard(log_dir="logs/Main")
+tensorboard = callbacks.TensorBoard(log_dir="logs/Main_1000")
  
-model.fit(train_generator, steps_per_epoch = steps_per_epoch, validation_data=(test_images, test_labels), epochs=400, callbacks=[tensorboard])
+model.fit(train_generator, steps_per_epoch = steps_per_epoch, validation_data=(test_images, test_labels), epochs=1000, callbacks=[tensorboard])
 
-model.save('saved_model/Main')
+model.save('saved_model/Main_1000')
